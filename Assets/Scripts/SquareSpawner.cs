@@ -29,9 +29,9 @@ public class SquareSpawner : MonoBehaviour
 
     public void drawSquare(float size, Vector3 position, Color color, float time)
     {
-        Debug.DrawLine(position + new Vector3(size / 2 * -1, size / 2 * -1), position + new Vector3(size / 2 * -1, size / 2), color, time);
-        Debug.DrawLine(position + new Vector3(size / 2 * -1, size / 2), position + new Vector3(size / 2, size / 2), color, time);
-        Debug.DrawLine(position + new Vector3(size / 2, size / 2), position + new Vector3(size / 2, size / 2 * -1), color, time);
-        Debug.DrawLine(position + new Vector3(size / 2, size / 2 * -1), position + new Vector3(size / 2 * -1, size / 2 * -1), color, time);
+        Debug.DrawLine(position + new Vector3(size / 2 * -1, size / 2 * -1), position + new Vector3(size / 2 * -1, size / 2, 0), color, time);
+        Debug.DrawLine(position + new Vector3(size / 2 * -1, size / 2), position + new Vector3(size / 2, size / 2, 0), color, time);
+        Debug.DrawLine(position + new Vector3(size / 2, size / 2), position + new Vector3(size / 2, size / 2 * -1, 0), color, time);
+        Debug.DrawLine(position + new Vector3(size / 2, size / 2 * -1), position + new Vector3(size / 2 * -1, size / 2 * -1, 0), color, time);
     }
 }
