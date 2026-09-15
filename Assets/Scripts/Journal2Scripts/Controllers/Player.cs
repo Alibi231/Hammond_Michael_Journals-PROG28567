@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.LowLevel;
 
 public class Player : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class Player : MonoBehaviour
 
     public float cornerDistance;
     public int numberOfTrailBombs;
+
+    public float warpValue;
     
     // Update is called once per frame
     void Update()
@@ -36,6 +39,12 @@ public class Player : MonoBehaviour
         {
             //Calls the SpawnBombOnRandomCorner method to spawn the bomb in a random corner using the cornerDistance variable for distance.
             SpawnBombOnRandomCorner(cornerDistance);
+        }
+
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            //Moves the player to a distance between the player and enemy, based on the warpValue variable.
+            WarpPlayer(enemyTransform, warpValue);
         }
     }
 
@@ -77,6 +86,11 @@ public class Player : MonoBehaviour
 
         //Spawns the bomb using the players position, then the corner vector multiplied by the distance parameter.
         SpawnBombAtOffset(corner * inDistance);
+    }
 
+    public void WarpPlayer(Transform target, float ratio)
+    {
+        //Sets the position to a spot between the position of the player and enemy, based on the ratio value.
+        transform.position = Vector3.Lerp(transform.position, target.position, ratio);
     }
 }
