@@ -53,14 +53,14 @@ public class Player : MonoBehaviour
         for (int i = 0; i < inNumberOfBombs; i++)
         {
             // one is added to i because it starts at 0, so the offset would be ignored for the first mine
-            Instantiate(bombPrefab, transform.position + Vector3.down * inBombSpacing * (i + 1), Quaternion.identity);
+            SpawnBombAtOffset(Vector3.down * inBombSpacing * (i + 1));
         }
     }
 
     public void SpawnBombOnRandomCorner(float inDistance)
     {
         //Make a vector that is up and right, normalized to have a value of 1.
-        Vector2 corner = (Vector2.up + Vector2.right).normalized;
+        Vector3 corner = (Vector2.up + Vector2.right).normalized;
 
         // Used this discussion to refresh me on Random.Range https://discussions.unity.com/t/random-int-value/7800.
         //Uses random to have a 50/50 chance to multiple the x component by -1, changing it from right to left.
@@ -76,7 +76,7 @@ public class Player : MonoBehaviour
         }
 
         //Spawns the bomb using the players position, then the corner vector multiplied by the distance parameter.
-        Instantiate(bombPrefab, transform.position + (Vector3)corner * inDistance, Quaternion.identity);
+        SpawnBombAtOffset(corner * inDistance);
 
     }
 }
