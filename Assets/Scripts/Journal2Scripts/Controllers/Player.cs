@@ -14,13 +14,17 @@ public class Player : MonoBehaviour
     public float bombTrailSpacing;
 
     public float cornerDistance;
+
     public int numberOfTrailBombs;
 
     public float warpValue;
+
+    public float maxRange;
     
     // Update is called once per frame
     void Update()
     {
+        DetectAsteroids(maxRange, asteroidTransforms);
 
         //Checks if the player has pressed the b button
         if (Input.GetKeyDown(KeyCode.B))
@@ -92,5 +96,22 @@ public class Player : MonoBehaviour
     {
         //Sets the position to a spot between the position of the player and enemy, based on the ratio value.
         transform.position = Vector3.Lerp(transform.position, target.position, ratio);
+    }
+
+    public void DetectAsteroids(float inMaxRange, List<Transform> inAsteroids)
+    {
+        //Loops through to run the code for every individual asteroud
+        for (int i = 0; i < inAsteroids.Count; i++)
+        {
+            //Checks if the distance between the player and asteroid is lower than the maxRange parameter.
+            if (Vector3.Distance(transform.position, inAsteroids[i].position) <= inMaxRange)
+            {
+                //Creates a vector as the distance between the player and asteroid, and makes it a direction vector by normalizing it
+                Vector3 directionVector = (inAsteroids[i].position - transform.position).normalized;
+                //Draws a line using that direction vector multiplied by the max range, added to the transform.position.
+                Debug.DrawLine(transform.position, transform.position + directionVector * inMaxRange, Color.green);
+            }
+        }
+
     }
 }
