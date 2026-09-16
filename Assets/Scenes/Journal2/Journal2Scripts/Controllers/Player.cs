@@ -72,7 +72,7 @@ public class Player : MonoBehaviour
 
     public void SpawnBombOnRandomCorner(float inDistance)
     {
-        //Make a vector that is up and right, normalized to have a value of 1.
+        //Make a vector that is up and right, normalized to have a value of 1 so it is a direction vector.
         Vector3 corner = (Vector2.up + Vector2.right).normalized;
 
         // Used this discussion to refresh me on Random.Range https://discussions.unity.com/t/random-int-value/7800.
@@ -97,6 +97,7 @@ public class Player : MonoBehaviour
         //Sets the position to a spot between the position of the player and enemy, based on the ratio value.
         transform.position = Vector3.Lerp(transform.position, target.position, ratio);
     }
+
 
     public void DetectAsteroids(float inMaxRange, List<Transform> inAsteroids)
     {
