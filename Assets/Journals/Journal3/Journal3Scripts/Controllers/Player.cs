@@ -4,11 +4,13 @@ using UnityEngine.InputSystem.LowLevel;
 
 public class Player : MonoBehaviour
 {
+    
     public Transform enemyTransform;
     public GameObject bombPrefab;
     public List<Transform> asteroidTransforms;
 
     //Vector2 that stores the offset of the bomb from the player.
+    [Space(10)]
     public Vector2 bombOffset;
 
     public float bombTrailSpacing;
@@ -17,13 +19,35 @@ public class Player : MonoBehaviour
 
     public int numberOfTrailBombs;
 
+    [Space(10)]
     public float warpValue;
 
     public float maxRange;
-    
+
+    public float speed;
+
+    public float maxSpeed;
+
+    public Vector2 currentVelocity;
+
+    public float accelerationTime;
+
+    public float decelerationTime;
+
+    private float acceleration;
+
+    private float deceleration;
+
+    private void Start()
+    {
+        acceleration = maxSpeed / accelerationTime;
+        deceleration = maxSpeed / decelerationTime;
+    }
+
     // Update is called once per frame
     void Update()
     {
+        PlayerMovement();
         DetectAsteroids(maxRange, asteroidTransforms);
 
         //Checks if the player has pressed the b button
@@ -45,12 +69,93 @@ public class Player : MonoBehaviour
             SpawnBombOnRandomCorner(cornerDistance);
         }
 
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             //Moves the player to a distance between the player and enemy, based on the warpValue variable.
             WarpPlayer(enemyTransform, warpValue);
         }
     }
+
+    #region Movement
+    public void PlayerMovement()
+    {
+        Vector2 cameraBounds = (Vector2)Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            if (transform.position.x > -cameraBounds.x)
+            {
+                currentVelocity += Vector2.left * acceleration * Time.deltaTime;
+            } else
+            {
+                currentVelocity.x = 0; // code in the else should be running at all times now in it's own seperate if statement
+            }
+        }
+
+        if (Input.GetKey(KeyCode.D))
+        {
+            if (transform.position.x < cameraBounds.x)
+            {
+                currentVelocity += Vector2.right * acceleration * Time.deltaTime;
+            } else
+            {
+                currentVelocity.x = 0;
+            }
+        }
+
+        if (Input.GetKey(KeyCode.W))
+        {
+            if (transform.position.y < cameraBounds.y)
+            {
+                currentVelocity += Vector2.up * acceleration * Time.deltaTime; 
+            }
+            else
+            {
+                currentVelocity.y = 0;
+            }
+        }
+
+        if (Input.GetKey(KeyCode.S))
+        {
+            if (transform.position.y > -cameraBounds.y)
+            {
+                currentVelocity += Vector2.down * acceleration * Time.deltaTime;
+            }
+            else
+            {
+                currentVelocity.y = 0;
+            }
+        }
+
+        if (!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D))
+        {
+            float currentMagntidue = currentVelocity.magnitude;
+            currentMagntidue -= deceleration * Time.deltaTime;
+            if (currentMagntidue < 0.0005)
+            {
+                currentMagntidue = 0;
+            }
+            currentVelocity.Normalize();
+            currentVelocity *= currentMagntidue;
+        }
+
+        //if (currentVelocity.magnitude  >= maxSpeed) Initial solution before learning about clamp
+        //{
+        //    currentVelocity.Normalize();
+        //    currentVelocity *= maxSpeed;
+        //}
+        currentVelocity = Vector2.ClampMagnitude(currentVelocity, maxSpeed);
+
+        transform.position += (Vector3)currentVelocity * Time.deltaTime;
+    }
+
+    public void WarpPlayer(Transform target, float ratio)
+    {
+        //Sets the position to a spot between the position of the player and enemy, based on the ratio value.
+        transform.position = Vector3.Lerp(transform.position, target.position, ratio);
+    }
+
+    #endregion
 
     //Spawns a bomb at an offset
     public void SpawnBombAtOffset(Vector3 inOffset)
@@ -90,12 +195,6 @@ public class Player : MonoBehaviour
 
         //Spawns the bomb using the players position, then the corner vector multiplied by the distance parameter.
         SpawnBombAtOffset(corner * inDistance);
-    }
-
-    public void WarpPlayer(Transform target, float ratio)
-    {
-        //Sets the position to a spot between the position of the player and enemy, based on the ratio value.
-        transform.position = Vector3.Lerp(transform.position, target.position, ratio);
     }
 
 
