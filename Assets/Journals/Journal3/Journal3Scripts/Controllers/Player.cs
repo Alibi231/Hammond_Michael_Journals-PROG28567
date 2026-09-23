@@ -40,7 +40,10 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        // Acceleration is set to the maxSpeed divided by the acceleration time, to make the player accelerate correctly
         acceleration = maxSpeed / accelerationTime;
+
+        // Decelleration is set to the maxSpeed divided by the acceleration time, to make the player decellerates correctly
         deceleration = maxSpeed / decelerationTime;
     }
 
@@ -79,15 +82,20 @@ public class Player : MonoBehaviour
     #region Movement
     public void PlayerMovement()
     {
+        //Camera bounds are set using the width and height of the screen and converting them from screen to world points
         Vector2 cameraBounds = (Vector2)Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
 
+        //Check if the A key is being held down
         if (Input.GetKey(KeyCode.A))
         {
+            // Only run the code if the player is inside the camera's bounds
             if (transform.position.x > -cameraBounds.x)
             {
+                // Change the velocity by the acceleration value.
                 currentVelocity += Vector2.left * acceleration * Time.deltaTime;
             } else
             {
+                // Velocity is set to 0 if the player leaves the screen bounds
                 currentVelocity.x = 0; // code in the else should be running at all times now in it's own seperate if statement
             }
         }
@@ -127,16 +135,23 @@ public class Player : MonoBehaviour
             }
         }
 
+        // Checks if the player is not currently holding any of the direction keys
         if (!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D))
         {
-            float currentMagntidue = currentVelocity.magnitude;
-            currentMagntidue -= deceleration * Time.deltaTime;
-            if (currentMagntidue < 0.0005)
+            // Stores the current magnitude as a float
+            float currentMagnitude = currentVelocity.magnitude;
+            // Reduces the currentMagnitude by the deceleration multiplied by deltaTime
+            currentMagnitude -= deceleration * Time.deltaTime;
+
+            //If the value is inceredibly small, it is set to absolute zero.
+            if (currentMagnitude < 0.0005)
             {
-                currentMagntidue = 0;
+                currentMagnitude = 0;
             }
+            //Normalizes the players current velocity
             currentVelocity.Normalize();
-            currentVelocity *= currentMagntidue;
+            //Multiplies it by currentMagnitude to lower the players current velocity
+            currentVelocity *= currentMagnitude;
         }
 
         //if (currentVelocity.magnitude  >= maxSpeed) Initial solution before learning about clamp
@@ -144,8 +159,11 @@ public class Player : MonoBehaviour
         //    currentVelocity.Normalize();
         //    currentVelocity *= maxSpeed;
         //}
+
+        // Maximum value of the velocity vector is clamped to the maxSpeed of the player
         currentVelocity = Vector2.ClampMagnitude(currentVelocity, maxSpeed);
 
+        // The currentVelocity Vector is made into a vector 3 and then added to the players position
         transform.position += (Vector3)currentVelocity * Time.deltaTime;
     }
 
