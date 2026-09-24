@@ -175,7 +175,10 @@ PrefabInstance:
     - {fileID: 4138628647630011040, guid: 462add3d0f7c62a4682e9c053b00ec93, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7969683946929540427, guid: 462add3d0f7c62a4682e9c053b00ec93, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1022391382}
   m_SourcePrefab: {fileID: 100100000, guid: 462add3d0f7c62a4682e9c053b00ec93, type: 3}
 --- !u!4 &14271830 stripped
 Transform:
@@ -238,12 +241,20 @@ PrefabInstance:
     - {fileID: 4138628647630011040, guid: 462add3d0f7c62a4682e9c053b00ec93, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7969683946929540427, guid: 462add3d0f7c62a4682e9c053b00ec93, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1637024207}
   m_SourcePrefab: {fileID: 100100000, guid: 462add3d0f7c62a4682e9c053b00ec93, type: 3}
 --- !u!4 &278059574 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4194190890010494449, guid: 462add3d0f7c62a4682e9c053b00ec93, type: 3}
   m_PrefabInstance: {fileID: 278059573}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &297350533 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7969683946929540427, guid: 462add3d0f7c62a4682e9c053b00ec93, type: 3}
+  m_PrefabInstance: {fileID: 578339795}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &304943159
 PrefabInstance:
@@ -301,7 +312,10 @@ PrefabInstance:
     - {fileID: 4138628647630011040, guid: 462add3d0f7c62a4682e9c053b00ec93, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7969683946929540427, guid: 462add3d0f7c62a4682e9c053b00ec93, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2017643200}
   m_SourcePrefab: {fileID: 100100000, guid: 462add3d0f7c62a4682e9c053b00ec93, type: 3}
 --- !u!4 &304943160 stripped
 Transform:
@@ -364,12 +378,37 @@ PrefabInstance:
     - {fileID: 4138628647630011040, guid: 462add3d0f7c62a4682e9c053b00ec93, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7969683946929540427, guid: 462add3d0f7c62a4682e9c053b00ec93, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 578339797}
   m_SourcePrefab: {fileID: 100100000, guid: 462add3d0f7c62a4682e9c053b00ec93, type: 3}
 --- !u!4 &578339796 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4194190890010494449, guid: 462add3d0f7c62a4682e9c053b00ec93, type: 3}
   m_PrefabInstance: {fileID: 578339795}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &578339797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297350533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0de4bc6d848ee04980dfc47f7dfffc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Asteroid
+  moveSpeed: 1
+  arrivalDistance: 0.4
+  maxFloatDistance: 5
+  destination: {x: 0, y: 0, z: 0}
+  direction: {x: 0, y: 0, z: 0}
+--- !u!1 &735912664 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7969683946929540427, guid: 462add3d0f7c62a4682e9c053b00ec93, type: 3}
+  m_PrefabInstance: {fileID: 1552981066}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &742019646
 PrefabInstance:
@@ -427,7 +466,10 @@ PrefabInstance:
     - {fileID: 4138628647630011040, guid: 462add3d0f7c62a4682e9c053b00ec93, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7969683946929540427, guid: 462add3d0f7c62a4682e9c053b00ec93, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1524368782}
   m_SourcePrefab: {fileID: 100100000, guid: 462add3d0f7c62a4682e9c053b00ec93, type: 3}
 --- !u!4 &742019647 stripped
 Transform:
@@ -491,6 +533,33 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3900e4d87ee29c43ad1d9098b51432c, type: 3}
+--- !u!1 &1022391381 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7969683946929540427, guid: 462add3d0f7c62a4682e9c053b00ec93, type: 3}
+  m_PrefabInstance: {fileID: 14271829}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1022391382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1022391381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0de4bc6d848ee04980dfc47f7dfffc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Asteroid
+  moveSpeed: 1
+  arrivalDistance: 0.4
+  maxFloatDistance: 5
+  destination: {x: 0, y: 0, z: 0}
+  direction: {x: 0, y: 0, z: 0}
+--- !u!1 &1176413905 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7969683946929540427, guid: 462add3d0f7c62a4682e9c053b00ec93, type: 3}
+  m_PrefabInstance: {fileID: 1791284210}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1220048545
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -547,7 +616,10 @@ PrefabInstance:
     - {fileID: 4138628647630011040, guid: 462add3d0f7c62a4682e9c053b00ec93, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7969683946929540427, guid: 462add3d0f7c62a4682e9c053b00ec93, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1784462214}
   m_SourcePrefab: {fileID: 100100000, guid: 462add3d0f7c62a4682e9c053b00ec93, type: 3}
 --- !u!4 &1220048546 stripped
 Transform:
@@ -610,7 +682,10 @@ PrefabInstance:
     - {fileID: 4138628647630011040, guid: 462add3d0f7c62a4682e9c053b00ec93, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7969683946929540427, guid: 462add3d0f7c62a4682e9c053b00ec93, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1788829435}
   m_SourcePrefab: {fileID: 100100000, guid: 462add3d0f7c62a4682e9c053b00ec93, type: 3}
 --- !u!4 &1282445455 stripped
 Transform:
@@ -829,13 +904,38 @@ PrefabInstance:
     - {fileID: 4138628647630011040, guid: 462add3d0f7c62a4682e9c053b00ec93, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7969683946929540427, guid: 462add3d0f7c62a4682e9c053b00ec93, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2097825018}
   m_SourcePrefab: {fileID: 100100000, guid: 462add3d0f7c62a4682e9c053b00ec93, type: 3}
 --- !u!4 &1522834010 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4194190890010494449, guid: 462add3d0f7c62a4682e9c053b00ec93, type: 3}
   m_PrefabInstance: {fileID: 1522834009}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1524368781 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7969683946929540427, guid: 462add3d0f7c62a4682e9c053b00ec93, type: 3}
+  m_PrefabInstance: {fileID: 742019646}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1524368782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524368781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0de4bc6d848ee04980dfc47f7dfffc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Asteroid
+  moveSpeed: 1
+  arrivalDistance: 0.4
+  maxFloatDistance: 5
+  destination: {x: 0, y: 0, z: 0}
+  direction: {x: 0, y: 0, z: 0}
 --- !u!1001 &1552981066
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -892,13 +992,55 @@ PrefabInstance:
     - {fileID: 4138628647630011040, guid: 462add3d0f7c62a4682e9c053b00ec93, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7969683946929540427, guid: 462add3d0f7c62a4682e9c053b00ec93, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1552981068}
   m_SourcePrefab: {fileID: 100100000, guid: 462add3d0f7c62a4682e9c053b00ec93, type: 3}
 --- !u!4 &1552981067 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4194190890010494449, guid: 462add3d0f7c62a4682e9c053b00ec93, type: 3}
   m_PrefabInstance: {fileID: 1552981066}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1552981068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 735912664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0de4bc6d848ee04980dfc47f7dfffc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Asteroid
+  moveSpeed: 1
+  arrivalDistance: 0.4
+  maxFloatDistance: 5
+  destination: {x: 0, y: 0, z: 0}
+  direction: {x: 0, y: 0, z: 0}
+--- !u!1 &1637024206 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7969683946929540427, guid: 462add3d0f7c62a4682e9c053b00ec93, type: 3}
+  m_PrefabInstance: {fileID: 278059573}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1637024207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637024206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0de4bc6d848ee04980dfc47f7dfffc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Asteroid
+  moveSpeed: 1
+  arrivalDistance: 0.4
+  maxFloatDistance: 5
+  destination: {x: 0, y: 0, z: 0}
+  direction: {x: 0, y: 0, z: 0}
 --- !u!850595691 &1751276764
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -966,6 +1108,50 @@ LightingSettings:
   m_PVRFilteringAtrousPositionSigmaIndirect: 2
   m_PVRFilteringAtrousPositionSigmaAO: 1
   m_RespectSceneVisibilityWhenBakingGI: 0
+--- !u!1 &1784462213 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7969683946929540427, guid: 462add3d0f7c62a4682e9c053b00ec93, type: 3}
+  m_PrefabInstance: {fileID: 1220048545}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1784462214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784462213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0de4bc6d848ee04980dfc47f7dfffc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Asteroid
+  moveSpeed: 1
+  arrivalDistance: 0.4
+  maxFloatDistance: 5
+  destination: {x: 0, y: 0, z: 0}
+  direction: {x: 0, y: 0, z: 0}
+--- !u!1 &1788829434 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7969683946929540427, guid: 462add3d0f7c62a4682e9c053b00ec93, type: 3}
+  m_PrefabInstance: {fileID: 1282445454}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1788829435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788829434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0de4bc6d848ee04980dfc47f7dfffc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Asteroid
+  moveSpeed: 1
+  arrivalDistance: 0.4
+  maxFloatDistance: 5
+  destination: {x: 0, y: 0, z: 0}
+  direction: {x: 0, y: 0, z: 0}
 --- !u!1001 &1791284210
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1022,13 +1208,55 @@ PrefabInstance:
     - {fileID: 4138628647630011040, guid: 462add3d0f7c62a4682e9c053b00ec93, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7969683946929540427, guid: 462add3d0f7c62a4682e9c053b00ec93, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1791284212}
   m_SourcePrefab: {fileID: 100100000, guid: 462add3d0f7c62a4682e9c053b00ec93, type: 3}
 --- !u!4 &1791284211 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4194190890010494449, guid: 462add3d0f7c62a4682e9c053b00ec93, type: 3}
   m_PrefabInstance: {fileID: 1791284210}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1791284212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176413905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0de4bc6d848ee04980dfc47f7dfffc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Asteroid
+  moveSpeed: 1
+  arrivalDistance: 0.4
+  maxFloatDistance: 5
+  destination: {x: 0, y: 0, z: 0}
+  direction: {x: 0, y: 0, z: 0}
+--- !u!1 &2017643199 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7969683946929540427, guid: 462add3d0f7c62a4682e9c053b00ec93, type: 3}
+  m_PrefabInstance: {fileID: 304943159}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2017643200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017643199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0de4bc6d848ee04980dfc47f7dfffc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Asteroid
+  moveSpeed: 1
+  arrivalDistance: 0.4
+  maxFloatDistance: 5
+  destination: {x: 0, y: 0, z: 0}
+  direction: {x: 0, y: 0, z: 0}
 --- !u!1001 &2030902519
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1094,6 +1322,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6890330259706833056, guid: abc125f00ae369940b2c5c0275186637, type: 3}
+      propertyPath: enemyMaxSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6890330259706833056, guid: abc125f00ae369940b2c5c0275186637, type: 3}
       propertyPath: cornerDistance
       value: 3
       objectReference: {fileID: 0}
@@ -1116,6 +1348,10 @@ PrefabInstance:
     - target: {fileID: 6890330259706833056, guid: abc125f00ae369940b2c5c0275186637, type: 3}
       propertyPath: numberOfTrailBombs
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6890330259706833056, guid: abc125f00ae369940b2c5c0275186637, type: 3}
+      propertyPath: enemyAccelerationTime
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6890330259706833056, guid: abc125f00ae369940b2c5c0275186637, type: 3}
       propertyPath: asteroidTransforms.Array.size
@@ -1166,6 +1402,28 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abc125f00ae369940b2c5c0275186637, type: 3}
+--- !u!1 &2097825017 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7969683946929540427, guid: 462add3d0f7c62a4682e9c053b00ec93, type: 3}
+  m_PrefabInstance: {fileID: 1522834009}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2097825018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2097825017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0de4bc6d848ee04980dfc47f7dfffc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Asteroid
+  moveSpeed: 1
+  arrivalDistance: 0.4
+  maxFloatDistance: 5
+  destination: {x: 0, y: 0, z: 0}
+  direction: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
