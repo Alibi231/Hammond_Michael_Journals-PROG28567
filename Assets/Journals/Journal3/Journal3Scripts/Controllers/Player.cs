@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem.LowLevel;
 
@@ -38,10 +39,20 @@ public class Player : MonoBehaviour
 
     private float deceleration;
 
+    [Space(10)]
+    public Vector2 enemyCurrentVelocity;
+
+    public float enemyMaxSpeed;
+    public float enemyAccelerationTime;
+
+    private float enemyAcceleration;
+
     private void Start()
     {
         // Acceleration is set to the maxSpeed divided by the acceleration time, to make the player accelerate correctly
         acceleration = maxSpeed / accelerationTime;
+
+        enemyAcceleration = enemyMaxSpeed / enemyAccelerationTime;
 
         // Decelleration is set to the maxSpeed divided by the acceleration time, to make the player decellerates correctly
         deceleration = maxSpeed / decelerationTime;
@@ -51,6 +62,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         PlayerMovement();
+        EnemyMovement();
         DetectAsteroids(maxRange, asteroidTransforms);
 
         //Checks if the player has pressed the b button
@@ -174,6 +186,24 @@ public class Player : MonoBehaviour
     }
 
     #endregion
+    //Vector2 directionVector = ((transform.position - enemyTransform.position).normalized - (Vector3)enemyCurrentVelocity.normalized * .95f).normalized;
+
+    public void EnemyMovement()
+    {
+        // Checks if the enemy is near the player
+        if (enemyTransform.position != transform.position){
+            // point the enemy towards the player with respect to it's current velocity
+            Vector2 directionVector = ((transform.position - enemyTransform.position).normalized - (Vector3)enemyCurrentVelocity.normalized * .95f).normalized; ;
+            // adds the acceleration in that direction to the players current velocity
+            enemyCurrentVelocity += directionVector * enemyAcceleration * Time.deltaTime;
+        }
+
+        // clamps the enemy's current velocity to it's max speed;
+        enemyCurrentVelocity = Vector2.ClampMagnitude(enemyCurrentVelocity, enemyMaxSpeed);
+        // adds the enemy's current velocity to it's position
+        enemyTransform.position += (Vector3)enemyCurrentVelocity * Time.deltaTime;
+
+    }
 
     //Spawns a bomb at an offset
     public void SpawnBombAtOffset(Vector3 inOffset)
