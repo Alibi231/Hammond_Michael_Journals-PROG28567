@@ -8,9 +8,9 @@ public class Asteroid : MonoBehaviour
     public float arrivalDistance;
     public float maxFloatDistance;
 
-    private Vector3 destination;
+    public Vector3 destination;
 
-    private Vector3 direction;
+    public Vector3 direction;
 
     // Start is called before the first frame update
     void Start()
