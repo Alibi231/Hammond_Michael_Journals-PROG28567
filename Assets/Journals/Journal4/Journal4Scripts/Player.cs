@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
     public int numberOfTrailBombs;
 
     [Space(10)]
+    public int circlePoints;
+
     public float warpValue;
 
     public float maxRange;
@@ -61,6 +63,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        EnemyRadar(3, circlePoints);
         PlayerMovement();
         EnemyMovement();
         DetectAsteroids(maxRange, asteroidTransforms);
@@ -261,5 +264,52 @@ public class Player : MonoBehaviour
             }
         }
 
+    }
+
+    public void EnemyRadar(float radius, int circlePoints)
+    {
+        // Sets color to green defaultly
+        Color color = Color.green;
+
+        // Makes an empty list of vector3's to store the position of the circelPoints
+        List<Vector3> pointPosition = new List<Vector3>();
+
+        // If the enemy is within the radius of the player, the color is changed to red
+        if (Vector3.Magnitude(enemyTransform.position - transform.position) <= radius)
+        {
+            color = Color.red;
+        }
+
+        //Loops through once for each point
+        for (int i = 0; i < circlePoints; i++)
+        {
+            // Sets increment to 360 divided by the number of points to get the angle between each point.
+            float increment = 360f / circlePoints;
+
+            // Sets angle to that increment multiplied by the iterator to get the angle of the current point.
+            float angle = increment * i;
+
+            // Uses cos and sin to turn that angle into a x and y value.
+            float xPos = Mathf.Cos(angle * Mathf.Deg2Rad) * radius;
+            float yPos = Mathf.Sin(angle * Mathf.Deg2Rad) * radius;
+            // Takes those x and y values and adds them to the players position to get the final position of the point on the circle.
+            Vector3 currentPosition = new Vector3(xPos, yPos, 0) + transform.position;
+            pointPosition.Add(currentPosition);
+        }
+
+        // Loops once for every position in the pointPosition list.
+        for (int i = 0; i < pointPosition.Count; i++)
+        {
+            // If its the final point, draw a line between itself and the first point
+            if (i == pointPosition.Count -1)
+            {
+                Debug.DrawLine(pointPosition[i], pointPosition[0], color);
+            }
+            // Otherwise, draw a line between itself and the next point.
+            else
+            {
+                Debug.DrawLine(pointPosition[i], pointPosition[i + 1], color);
+            }
+        }
     }
 }
