@@ -21,6 +21,9 @@ public class Player : MonoBehaviour
     public int numberOfTrailBombs;
 
     [Space(10)]
+    public GameObject powerUp;
+
+    public int powerUpNumber;
     public int circlePoints;
 
     public float warpValue;
@@ -91,6 +94,12 @@ public class Player : MonoBehaviour
         {
             //Moves the player to a distance between the player and enemy, based on the warpValue variable.
             WarpPlayer(enemyTransform, warpValue);
+        }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            //Moves the player to a distance between the player and enemy, based on the warpValue variable.
+            SpawnPowerups(maxRange, powerUpNumber);
         }
     }
 
@@ -310,6 +319,26 @@ public class Player : MonoBehaviour
             {
                 Debug.DrawLine(pointPosition[i], pointPosition[i + 1], color);
             }
+        }
+    }
+
+    public void SpawnPowerups(float radius, int numberOfPowerups)
+    {
+        //Loops through once for each point
+        for (int i = 0; i < numberOfPowerups; i++)
+        {
+            // Sets increment to 360 divided by the number of points to get the angle between each point.
+            float increment = 360f / numberOfPowerups;
+
+            // Sets angle to that increment multiplied by the iterator to get the angle of the current point.
+            float angle = increment * i;
+
+            // Uses cos and sin to turn that angle into a x and y value.
+            float xPos = Mathf.Cos(angle * Mathf.Deg2Rad) * radius;
+            float yPos = Mathf.Sin(angle * Mathf.Deg2Rad) * radius;
+            // Takes those x and y values and adds them to the players position to get the final position of the point on the circle.
+            Vector3 currentPosition = new Vector3(xPos, yPos, 0) + transform.position;
+            Instantiate(powerUp, currentPosition, Quaternion.identity);
         }
     }
 }
