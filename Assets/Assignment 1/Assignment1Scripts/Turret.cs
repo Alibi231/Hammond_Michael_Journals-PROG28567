@@ -13,10 +13,11 @@ public class Turret : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(Vector3.forward, angularSpeed * Time.deltaTime);
+        //transform.Rotate(Vector3.forward, angularSpeed * Time.deltaTime);
         Debug.DrawLine(transform.position, transform.position + transform.up * 30, Color.red);
+        //Debug.Log(Facing(transform.up, enemyPosition.position));
 
-        Debug.Log(Facing(transform.up, enemyPosition.position));
+        LookAt();
     }
 
     public string Facing(Vector2 turretUp, Vector2 enemyPos)
@@ -33,6 +34,31 @@ public class Turret : MonoBehaviour
         else{
             return "Behind";
         }
+
+    }
+
+    public void LookAt()
+    {
+        Vector2 directionToTarget = (enemyPosition.position - transform.position).normalized;
+        float upAngle = Mathf.Atan2(transform.up.y, transform.up.x) * Mathf.Rad2Deg;
+        float directionAngle = Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg;
+        float deltaAngle = Mathf.DeltaAngle(upAngle, directionAngle);
+
+        if (Vector2.Dot(transform.up, directionToTarget) < 0.99999)
+        {
+            switch (Mathf.Sign(deltaAngle))
+            {
+                case 1:
+                    transform.Rotate(Vector3.forward, angularSpeed * Time.deltaTime);
+                    break;
+
+                case -1:
+                    transform.Rotate(Vector3.forward, -angularSpeed * Time.deltaTime);
+                    break;
+            }
+        }
         
+
+        //Debug.Log(deltaAngle);
     }
 }
