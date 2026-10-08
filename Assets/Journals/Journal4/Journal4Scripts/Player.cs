@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
+using UnityEngine.Rendering;
 
 public class Player : MonoBehaviour
 {
@@ -52,6 +54,8 @@ public class Player : MonoBehaviour
 
     private float enemyAcceleration;
 
+    public GameObject bullet;
+
     private void Start()
     {
         // Acceleration is set to the maxSpeed divided by the acceleration time, to make the player accelerate correctly
@@ -100,6 +104,11 @@ public class Player : MonoBehaviour
         {
             //Moves the player to a distance between the player and enemy, based on the warpValue variable.
             SpawnPowerups(maxRange, powerUpNumber);
+        }
+
+        if (Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            FireBullet();
         }
     }
 
@@ -200,6 +209,24 @@ public class Player : MonoBehaviour
     #endregion
     //Vector2 directionVector = ((transform.position - enemyTransform.position).normalized - (Vector3)enemyCurrentVelocity.normalized * .95f).normalized;
 
+
+    public void FireBullet()
+    {
+        // set currentBullet to an instantiated bullet at the players position.
+        GameObject currentBullet = Instantiate(bullet, transform.position, Quaternion.identity);
+
+        // Get the mouse position in world space.
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+
+        // Set direction to the direction vector pointing from the player to the mouse
+        Vector2 dir = (mousePos - (Vector2)transform.position).normalized;
+
+        // Set the bullets direction to the direction vector.
+        currentBullet.GetComponent<bulletScript>().direction = dir;
+
+        // Destroy the bullet after 5 seconds to prevent it from staying around forever off screen.
+        Destroy(currentBullet, 5);
+    }
     public void EnemyMovement()
     {
         // Checks if the enemy is near the player
