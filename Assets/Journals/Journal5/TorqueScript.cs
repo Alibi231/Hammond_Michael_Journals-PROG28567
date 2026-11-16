@@ -11,10 +11,12 @@ public class TorqueScript : MonoBehaviour
 
         /* 
         * TEST 2. Used the overload for force type. No idea what it does other than the fact Force seems Weaker than Impulse.
-        * Tried reading a discussion on the differece here https://discussions.unity.com/t/difference-between-forcemode-force-acceleration-impulse-velocitychange/103470/4
+        * Tried reading a discussion on the difference here:
+        * https://discussions.unity.com/t/difference-between-forcemode-force-acceleration-impulse-velocitychange/103470/4
         * Did nothing but get me lost, one squares time and one doesn't but why does that difference matter?
         */
         obj.GetComponent<Rigidbody2D>().AddTorque(5f, ForceMode2D.Impulse);
+        obj.GetComponent<Rigidbody2D>().AddTorque(5f, ForceMode2D.Force);
     }
 
     // Update is called once per frame
