@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 5f;
     public Rigidbody2D rb;
+    public Collider2D col;
     public Vector2 playerInput = new Vector2();
     public FacingDirection facing;
     public enum FacingDirection
@@ -15,6 +16,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        col = GetComponent<Collider2D>();
     }
 
     void Update()
@@ -58,7 +60,7 @@ public class PlayerController : MonoBehaviour
     }
     public bool IsGrounded()
     {
-        return false;
+        return col.IsTouchingLayers(LayerMask.GetMask("Ground"));
     }
 
     public FacingDirection GetFacingDirection()
