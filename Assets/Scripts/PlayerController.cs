@@ -5,6 +5,8 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 5f;
     public Rigidbody2D rb;
+    public Vector2 playerInput = new Vector2();
+    public FacingDirection facing;
     public enum FacingDirection
     {
         left, right
@@ -17,8 +19,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        
-        Vector2 playerInput = new Vector2();
 
         if (Keyboard.current.aKey.isPressed)
         {
@@ -41,11 +41,20 @@ public class PlayerController : MonoBehaviour
     private void MovementUpdate(Vector2 playerInput)
     {
         rb.linearVelocity = playerInput * speed;
+        IsWalking();
+        facing = GetFacingDirection();
     }
 
     public bool IsWalking()
     {
-        return false;
+        if (playerInput.x != 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
     public bool IsGrounded()
     {
@@ -54,6 +63,16 @@ public class PlayerController : MonoBehaviour
 
     public FacingDirection GetFacingDirection()
     {
-        return FacingDirection.left;
+        if (playerInput.x > 0)
+        {
+            return FacingDirection.right;
+        }
+        else if (playerInput.x < 0)
+        {
+            return FacingDirection.left;
+        } else
+        {
+            return facing;
+        }
     }
 }
